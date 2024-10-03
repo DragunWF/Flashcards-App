@@ -1,0 +1,8 @@
+# Security
+private
+.env
+credentials.json
+
+# Miscellaneous
+__pycache__
+.DS_STORE
