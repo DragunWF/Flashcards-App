@@ -1,8 +1,13 @@
+/* Unused at the moment but might get used in the future */
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.main-header {
+  text-align: center;
 }
 
 .text-bold {
