@@ -1,4 +1,4 @@
-function onReady() {
+document.createEventListener("DOMContentLoaded", () => {
   const revealBtnTexts = {
     default: "Reveal Answer",
     toggled: "Display Defintion",
@@ -16,6 +16,4 @@ function onReady() {
         "A reusable block of code that performs a specific task when called.";
     }
   });
-}
-
-onReady();
+});
