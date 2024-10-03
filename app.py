@@ -10,23 +10,28 @@ class WebApp:
     @app.route('/', methods=["GET"])
     def index():
         logging.info(f"A user is entering {request.url}")
-        return render_template('index.html')
+        FLASHCARD_CODE = request.args.get("code")
+        flashcards = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
+        if flashcards is None:
+            flashcards = DatabaseHelper.get_flashcards("TEST101")  # Default
+        return render_template("index.html", flashcard_topic=flashcards[0],
+                               flashcards=flashcards[1], len=len)
 
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
         logging.info(f"A user is sending a {request.method} to {request.url}")
         if request.method == "POST":
-            pass
             # TODO: Add functionality
-        return render_template('flashcard_editor.html')
+            pass
+        return render_template("flashcard_editor.html")
 
     @staticmethod
     def start():
         # Logging Configuration
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s %(levelname)s %(message)s",
-            datefmt="%b-%d-%Y",
+            format="%(asctime)s [%(levelname)s]: %(message)s",
+            datefmt="%b-%d-%Y %I:%M %p",  # %I for 12-hour format and %p for AM/PM
         )
 
         # Run the application
