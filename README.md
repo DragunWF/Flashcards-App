@@ -4,6 +4,10 @@
 
 I got bored...
 
+## Attributions
+
+- [Flashcard Favicon](https://www.flaticon.com/free-icon/flash-card_6587388)
+
 ---
 
 # Requirements
@@ -54,8 +58,6 @@ I got bored...
 ### Cultural Requirements
 
 - English language support
-
-# Structure
 
 ## Firebase Realtime Database Structure
 
