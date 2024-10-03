@@ -4,8 +4,31 @@ document.addEventListener("DOMContentLoaded", () => {
     default: "Reveal Answer",
     toggled: "Display Defintion",
   };
-  const revealBtn = document.getElementById("flashcardRevealBtn1");
-  const flashcardText = document.getElementById("flashcardText1");
+  const revealBtn = document.getElementById("flashcardRevealBtn");
+  const flashcardText = document.getElementById("flashcardText");
+  const flashcards = []; // Each element of arr: { answer: "", definition: "" }
+
+  function fillFlashcards() {
+    let flashcardCount = 0;
+    while (true) {
+      const flashcardDefinition = document.getElementById(
+        `flashcardDefinition${flashcardCount}`
+      );
+      const flashcardAnswer = document.getElementById(
+        `flashcardAnswer${flashcardCount}`
+      );
+
+      if (!flashcardDefinition || !flashcardAnswer) {
+        break;
+      }
+
+      flashcards.push({
+        answer: flashcardAnswer.innerText,
+        definition: flashcardDefinition.innerText,
+      });
+      flashcardCount++;
+    }
+  }
 
   revealBtn.addEventListener("click", () => {
     if (revealBtn.textContent === revealBtnTexts.default) {
@@ -22,4 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
   createFlashcardsBtn.addEventListener("click", () => {
     window.location.href = "/flashcard-editor";
   });
+
+  fillFlashcards();
 });
