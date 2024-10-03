@@ -13,3 +13,7 @@
 .text-bold {
   font-weight: bold;
 }
+
+.editor-container {
+  padding-bottom: 75px;
+}
