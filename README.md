@@ -54,3 +54,21 @@ I got bored...
 ### Cultural Requirements
 
 - English language support
+
+# Structure
+
+## Firebase Realtime Database Structure
+
+```json
+{
+  "flashcards": {
+    "code": {
+      "topic": "Topic of the flashcard deck",
+      "flashcard1": {
+        "definition": "The description of the answer",
+        "answer": "The term described by the definition"
+      }
+    }
+  }
+}
+```
