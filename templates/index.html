@@ -5,7 +5,7 @@
 <span id="flashcardDefinition{{ i }}" hidden>
   {{ flashcards[i].get_definition() }}
 </span>
-<span id="flashcardAnswer1{{ i }}" hidden>
+<span id="flashcardAnswer{{ i }}" hidden>
   {{ flashcards[i].get_answer() }}
 </span>
 {% endfor %}
@@ -23,12 +23,13 @@
         </div>
         <div class="card-body">
           <p class="card-text fs-5" id="flashcardText">
-            A reusable block of code that performs a specific task when called.
+            {{ flashcards[1].get_definition() }}
           </p>
           <div class="d-flex justify-content-center my-4">
             <button
               type="button"
               class="btn btn-outline-primary btn-lg mx-2"
+              id="flashcardNextBtn"
               aria-label="Previous"
             >
               &#60;-
@@ -43,6 +44,7 @@
             <button
               type="button"
               class="btn btn-outline-primary btn-lg mx-2"
+              id="flashcardPreviousBtn"
               aria-label="Next"
             >
               -&#62;
