@@ -1,71 +1,82 @@
 {% extends "layout.html" %} {% block main %}
-<div class="container mt-5">
+<div class="container mt-5 editor-container">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10 col-sm-12">
       <div class="text-center mb-4">
         <h1 class="display-4 fw-bold">Create/Edit Flashcard Deck</h1>
       </div>
 
-      <!-- Deck Title -->
-      <div class="mb-4">
-        <label for="deckTitle" class="form-label fs-5">Deck Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="deckTitle"
-          placeholder="Enter the title of the flashcard deck"
-        />
-      </div>
-
-      <!-- Flashcard List -->
-      <div id="flashcardContainer">
-        <div class="flashcard mb-3">
-          <h5 class="mb-3">Flashcard 1</h5>
-          <div class="mb-3">
-            <label for="definition1" class="form-label">Definition</label>
-            <textarea
-              class="form-control"
-              id="definition1"
-              rows="2"
-              placeholder="Enter the flashcard definition"
-            ></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="answer1" class="form-label">Answer</label>
-            <input
-              type="text"
-              class="form-control"
-              id="answer1"
-              placeholder="Enter the flashcard answer"
-            />
-          </div>
-          <hr />
+      <!-- Flashcard Deck Form -->
+      <form id="flashcardForm">
+        <!-- Deck Title -->
+        <div class="mb-4">
+          <label for="deckTitle" class="form-label fs-5">Deck Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="deckTitle"
+            placeholder="Enter the title of the flashcard deck"
+            required
+          />
         </div>
-      </div>
 
-      <!-- Add Flashcard Button -->
-      <div class="d-flex justify-content-center mb-4">
-        <button
-          type="button"
-          class="btn btn-outline-success"
-          id="addFlashcardBtn"
-        >
-          Add Flashcard
-        </button>
-      </div>
+        <!-- Flashcard List -->
+        <div id="flashcardContainer">
+          <div class="flashcard mb-3">
+            <h5 class="mb-3">Flashcard 1</h5>
+            <div class="mb-3">
+              <label for="definition1" class="form-label">Definition</label>
+              <textarea
+                class="form-control"
+                id="definition1"
+                rows="2"
+                placeholder="Enter the flashcard definition"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="answer1" class="form-label">Answer</label>
+              <input
+                type="text"
+                class="form-control"
+                id="answer1"
+                placeholder="Enter the flashcard answer"
+                required
+              />
+            </div>
+            <hr />
+          </div>
+        </div>
 
-      <!-- Bottom Buttons -->
-      <div class="d-flex justify-content-between mt-4">
-        <button type="button" class="btn btn-secondary" id="loadDeckBtn">
-          Load Flashcard Deck
-        </button>
-        <button type="button" class="btn btn-primary" id="saveDeckBtn">
-          Save Flashcard Deck
-        </button>
-        <button type="button" class="btn btn-danger" id="goBackBtn">
-          Go Back
-        </button>
-      </div>
+        <!-- Add Flashcard and Bottom Buttons in a Single Row -->
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Add Flashcard Button -->
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            id="addFlashcardBtn"
+          >
+            Add Flashcard
+          </button>
+
+          <!-- Bottom Buttons (Load, Save, Go Back) -->
+          <div class="d-flex">
+            <button
+              type="button"
+              class="btn btn-secondary me-2"
+              id="loadDeckBtn"
+            >
+              Load Flashcard Deck
+            </button>
+            <button type="submit" class="btn btn-primary me-2" id="saveDeckBtn">
+              Save Flashcard Deck
+            </button>
+            <button type="button" class="btn btn-danger" id="goBackBtn">
+              Go Back
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
