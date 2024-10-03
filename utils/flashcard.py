@@ -3,8 +3,8 @@ class Flashcard:
         self.__answer = answer
         self.__definition = definition
 
-    def get_answer(self):
+    def get_answer(self) -> str:
         return self.__answer
 
-    def get_definition(self):
+    def get_definition(self) -> str:
         return self.__definition
