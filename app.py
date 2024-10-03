@@ -9,12 +9,15 @@ app = Flask(__name__)
 class WebApp:
     @app.route('/', methods=["GET"])
     def index():
+        logging.info(f"A user is entering {request.url}")
         return render_template('index.html')
 
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
+        logging.info(f"A user is sending a {request.method} to {request.url}")
         if request.method == "POST":
             pass
+            # TODO: Add functionality
         return render_template('flashcard_editor.html')
 
     @staticmethod
