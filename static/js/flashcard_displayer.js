@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeFlashcardContent() {
+    revealBtn.textContent = revealBtnTexts.default;
     flashcardText.innerText = flashcards[flashcardIndex].definition;
   }
 
