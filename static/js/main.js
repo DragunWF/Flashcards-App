@@ -1,10 +1,12 @@
-document.createEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const createFlashcardsBtn = document.getElementById("createFlashcardsBtn");
   const revealBtnTexts = {
     default: "Reveal Answer",
     toggled: "Display Defintion",
   };
   const revealBtn = document.getElementById("flashcardRevealBtn1");
   const flashcardText = document.getElementById("flashcardText1");
+
   revealBtn.addEventListener("click", () => {
     if (revealBtn.textContent === revealBtnTexts.default) {
       revealBtn.textContent = revealBtnTexts.toggled;
@@ -15,5 +17,9 @@ document.createEventListener("DOMContentLoaded", () => {
       flashcardText.textContent =
         "A reusable block of code that performs a specific task when called.";
     }
+  });
+
+  createFlashcardsBtn.addEventListener("click", () => {
+    window.location.href = "/flashcard-editor";
   });
 });
