@@ -19,7 +19,7 @@ I got bored...
    - Users must be able to create new flashcards by providing a question and an answer through a form.
    - The system must save these flashcards and make them available immediately for review.
 4. **Save Flashcards**
-   - Flashcards created by users should be saved via a JSON file.
+   - Flashcards created by users should be saved via a Firebase.
    - The system must persist user-created flashcards between sessions.
 5. **Delete Flashcards**
    - Users should be able to delete a flashcard if they no longer need it.
@@ -34,7 +34,7 @@ I got bored...
 
 - The app should be simple and intuitive to use, requiring minimal explanation or instruction.
 - The interface should be clean, responsive, and accessible on both desktop and mobile devices.
-- Flashcards must persist across user sessions. This can be achieved by saving data via JSON.
+- Flashcards must persist across user sessions. This can be achieved by saving data via Firebase.
 - The app should work consistently across major browsers (e.g., Chrome, Firefox, Safari).
 - The app should adapt to different screen sizes and devices (mobile, tablet, desktop) for a responsive user experience.
 
