@@ -1,1 +1,27 @@
-{% extends "layout.html" %} {% block main %} {% endblock %}
+{% extends "layout.html" %} {% block main %}
+<div class="wrapper">
+  <div class="container">
+    <div class="card text-center">
+      <div class="card-header text-bold">Topic: Computer Programming</div>
+      <div class="card-body">
+        <p class="card-text" id="flashcardDesc1">
+          A reusable block of code that performs a specific task when called.
+        </p>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary">&#60;-</button>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="flashcardRevealBtn1"
+          >
+            Reveal Answer
+          </button>
+          <button type="button" class="btn btn-outline-primary">-&#62;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="/static/js/main.js"></script>
+{% endblock %}
