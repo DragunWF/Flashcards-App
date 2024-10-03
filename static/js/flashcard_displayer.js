@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeFlashcardContent() {
-    console.log("call");
     flashcardText.innerText = flashcards[flashcardIndex].definition;
   }
 
