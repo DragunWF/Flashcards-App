@@ -20,11 +20,15 @@ class DatabaseHelper:
         ref = db.reference(f"{Keys.FLASHCARDS.value}/{code}")
         if ref is None:
             return None
+
         flashcards = []
         data = ref.get()
+        if data is None:
+            return None
         for key in data:
             if key == Keys.TOPIC.value:
                 continue
             flashcards.append(Flashcard(data[key][Keys.ANSWER.value],
                                         data[key][Keys.DEFINITION.value]))
+
         return (data["topic"], flashcards)
