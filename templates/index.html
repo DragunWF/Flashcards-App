@@ -1,23 +1,61 @@
 {% extends "layout.html" %} {% block main %}
-<div class="wrapper">
-  <div class="container">
-    <div class="card text-center">
-      <div class="card-header text-bold">Topic: Computer Programming</div>
-      <div class="card-body">
-        <p class="card-text" id="flashcardDesc1">
-          A reusable block of code that performs a specific task when called.
-        </p>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" class="btn btn-outline-primary">&#60;-</button>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            id="flashcardRevealBtn1"
-          >
-            Reveal Answer
-          </button>
-          <button type="button" class="btn btn-outline-primary">-&#62;</button>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+
+    <!-- Flashcards -->
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="text-center mb-4">
+        <h1 class="main-header display-4 fw-bold">Flashcards App</h1>
+      </div>
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-uppercase fw-bold">
+          Topic: Computer Programming
         </div>
+        <div class="card-body">
+          <p class="card-text fs-5" id="flashcardDesc1">
+            A reusable block of code that performs a specific task when called.
+          </p>
+          <div class="d-flex justify-content-center my-4">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-lg mx-2"
+              aria-label="Previous"
+            >
+              &#60;-
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-lg mx-2"
+              id="flashcardRevealBtn1"
+            >
+              Reveal Answer
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-lg mx-2"
+              aria-label="Next"
+            >
+              -&#62;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit, Create, and Load buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" id="editFlashcardsBtn">
+          Edit Flashcards
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="createFlashcardsBtn"
+        >
+          Create your own Flashcards
+        </button>
+        <button type="button" class="btn btn-secondary" id="loadFlashcardsBtn">
+          Load Flashcards
+        </button>
       </div>
     </div>
   </div>
