@@ -1,0 +1,74 @@
+{% extends "layout.html" %} {% block main %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="text-center mb-4">
+        <h1 class="display-4 fw-bold">Create/Edit Flashcard Deck</h1>
+      </div>
+
+      <!-- Deck Title -->
+      <div class="mb-4">
+        <label for="deckTitle" class="form-label fs-5">Deck Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="deckTitle"
+          placeholder="Enter the title of the flashcard deck"
+        />
+      </div>
+
+      <!-- Flashcard List -->
+      <div id="flashcardContainer">
+        <div class="flashcard mb-3">
+          <h5 class="mb-3">Flashcard 1</h5>
+          <div class="mb-3">
+            <label for="definition1" class="form-label">Definition</label>
+            <textarea
+              class="form-control"
+              id="definition1"
+              rows="2"
+              placeholder="Enter the flashcard definition"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="answer1" class="form-label">Answer</label>
+            <input
+              type="text"
+              class="form-control"
+              id="answer1"
+              placeholder="Enter the flashcard answer"
+            />
+          </div>
+          <hr />
+        </div>
+      </div>
+
+      <!-- Add Flashcard Button -->
+      <div class="d-flex justify-content-center mb-4">
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          id="addFlashcardBtn"
+        >
+          Add Flashcard
+        </button>
+      </div>
+
+      <!-- Bottom Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" id="loadDeckBtn">
+          Load Flashcard Deck
+        </button>
+        <button type="button" class="btn btn-primary" id="saveDeckBtn">
+          Save Flashcard Deck
+        </button>
+        <button type="button" class="btn btn-danger" id="goBackBtn">
+          Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="/static/js/flashcard_editor.js"></script>
+{% endblock %}
