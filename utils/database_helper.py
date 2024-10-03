@@ -17,6 +17,10 @@ class DatabaseHelper:
 
     @staticmethod
     def get_flashcards(code: str) -> tuple[str, list[Flashcard]] | None:
+        if type(code) != str:
+            raise Exception(
+                f"Invalid data type passed! Expected string, instead got {type(code)}"
+            )
         ref = db.reference(f"{Keys.FLASHCARDS.value}/{code}")
         if ref is None:
             return None
