@@ -8,3 +8,6 @@ class Flashcard:
 
     def get_definition(self) -> str:
         return self.__definition
+
+    def to_dict(self) -> dict:
+        return { "answer": self.__answer, "definition": self.__definition }
