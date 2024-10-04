@@ -2,6 +2,7 @@ import logging
 from flask import Flask, render_template, request
 
 from helpers.database_helper import DatabaseHelper
+from helpers.flashcard import Flashcard
 
 app = Flask(__name__)
 
@@ -21,8 +22,20 @@ class WebApp:
     def flashcard_editor():
         logging.info(f"A user is sending a {request.method} to {request.url}")
         if request.method == "POST":
-            # TODO: Add functionality
-            pass
+            flashcard_count = 1
+            flashcards: list[Flashcard] = []
+            generated_code = None
+            while True:
+                definition = request.form.get(f"definition{flashcard_count}")
+                answer = request.form.get(f"answer{flashcard_count}")
+                if definition is None or answer is None:
+                    break
+                flashcards.append(Flashcard(answer, definition))
+                flashcard_count += 1
+                generated_code = DatabaseHelper.create_flashcard_deck(
+                    request.form.get("topic"), flashcards
+                )
+            return render_template("flashcard_editor.html", generated_code=generated_code)
         return render_template("flashcard_editor.html")
 
     @staticmethod
