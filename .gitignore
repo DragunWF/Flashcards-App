@@ -6,3 +6,6 @@ credentials.json
 # Miscellaneous
 __pycache__
 .DS_STORE
+
+# Personal
+dump
