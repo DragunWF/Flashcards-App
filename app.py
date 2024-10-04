@@ -11,20 +11,24 @@ class WebApp:
     @app.route('/', methods=["GET"])
     def index():
         logging.info(f"A user is entering {request.url}")
+        # Selects the flashcard deck to be displayed in the page
         FLASHCARD_CODE = request.args.get("code")
         flashcards = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
         if flashcards is None:
-            flashcards = DatabaseHelper.get_flashcards("TEST101")  # Default
+            flashcards = DatabaseHelper.get_flashcards("TEST101")  # Default Flashcard Deck
         return render_template("index.html", flashcard_topic=flashcards[0],
                                flashcards=flashcards[1], len=len)
 
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
         logging.info(f"A user is sending a {request.method} to {request.url}")
+
         if request.method == "POST":
             flashcard_count = 1
             flashcards: list[Flashcard] = []
             generated_code = None
+
+            # Parses the data in order to transfer it to the database
             while True:
                 definition = request.form.get(f"definition{flashcard_count}")
                 answer = request.form.get(f"answer{flashcard_count}")
@@ -36,6 +40,7 @@ class WebApp:
                     request.form.get("topic"), flashcards
                 )
             return render_template("flashcard_editor.html", generated_code=generated_code)
+        
         return render_template("flashcard_editor.html")
 
     @staticmethod
