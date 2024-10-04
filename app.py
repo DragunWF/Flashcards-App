@@ -1,7 +1,7 @@
 import logging
 from flask import Flask, render_template, request
 
-from utils.database_helper import DatabaseHelper
+from helpers.database_helper import DatabaseHelper
 
 app = Flask(__name__)
 

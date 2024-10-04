@@ -3,8 +3,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-from utils.flashcard import Flashcard
-from utils.database_keys import Keys
+from helpers.flashcard import Flashcard
+from helpers.database_keys import Keys
 
 
 class DatabaseHelper:
