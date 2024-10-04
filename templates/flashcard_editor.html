@@ -7,7 +7,7 @@
       </div>
 
       <!-- Flashcard Deck Form -->
-      <form id="flashcardForm">
+      <form id="flashcardForm" action="/flashcard-editor" method="post">
         <!-- Deck Title -->
         <div class="mb-4">
           <label for="deckTitle" class="form-label fs-5">Deck Title</label>
@@ -16,6 +16,7 @@
             class="form-control"
             id="deckTitle"
             placeholder="Enter the title of the flashcard deck"
+            name="topic"
             required
           />
         </div>
@@ -27,6 +28,7 @@
             <div class="mb-3">
               <label for="definition1" class="form-label">Definition</label>
               <textarea
+                name="definition1"
                 class="form-control"
                 id="definition1"
                 rows="2"
@@ -36,6 +38,7 @@
             <div class="mb-3">
               <label for="answer1" class="form-label">Answer</label>
               <input
+                name="answer1"
                 type="text"
                 class="form-control"
                 id="answer1"
