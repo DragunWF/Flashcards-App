@@ -11,11 +11,14 @@ class WebApp:
     @app.route('/', methods=["GET"])
     def index():
         logging.info(f"A user is entering {request.url}")
+        
         # Selects the flashcard deck to be displayed in the page
         FLASHCARD_CODE = request.args.get("code")
         flashcards = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
         if flashcards is None:
-            flashcards = DatabaseHelper.get_flashcards("TEST101")  # Default Flashcard Deck
+            # Default Flashcard Deck
+            flashcards = DatabaseHelper.get_flashcards("TEST101")  
+
         return render_template("index.html", flashcard_topic=flashcards[0],
                                flashcards=flashcards[1], len=len)
 
