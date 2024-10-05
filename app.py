@@ -25,8 +25,10 @@ class WebApp:
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
         logging.info(f"A user is sending a {request.method} to {request.url}")
+        is_new_deck_created = False
 
         if request.method == "POST":
+            is_new_deck_created = True
             flashcard_count = 1
             flashcards: list[Flashcard] = []
             generated_code = None
@@ -42,9 +44,11 @@ class WebApp:
                 generated_code = DatabaseHelper.create_flashcard_deck(
                     request.form.get("topic"), flashcards
                 )
-            return render_template("flashcard_editor.html", generated_code=generated_code)
+            return render_template("flashcard_editor.html", generated_code=generated_code,
+                                   is_new_deck_created=is_new_deck_created)
         
-        return render_template("flashcard_editor.html")
+        return render_template("flashcard_editor.html", 
+                               is_new_deck_created=is_new_deck_created)
 
     @staticmethod
     def start():
