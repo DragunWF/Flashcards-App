@@ -36,7 +36,7 @@ class DatabaseHelper:
     
     @staticmethod
     def create_flashcard_deck(topic: str, flashcards: list[Flashcard]) -> str:
-        if not type(topic) is None or not type(flashcards) is list:
+        if type(topic) is None or type(flashcards) is None:
             return None
         ref = db.reference(Keys.FLASHCARDS.value)
 
