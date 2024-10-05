@@ -1,4 +1,44 @@
 {% extends "layout.html" %} {% block main %}
+<!-- Modal -->
+{% if is_new_deck_created %}
+<div
+  class="modal fade"
+  id="codeModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Your Flashcard Deck Code
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <b>Generated Code:</b> {{ generated_code }}<br /><br />
+        Make sure to take note of this code, you'll need it to access or edit
+        your flashcard deck! Additionally, you can choose to share this code
+        with other people if you want them try out your deck or create their own
+        modified version of your deck.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Flashcard Container -->
 <div class="container mt-5 editor-container">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10 col-sm-12">
@@ -69,7 +109,13 @@
             >
               Load Flashcard Deck
             </button>
-            <button type="submit" class="btn btn-primary me-2" id="saveDeckBtn">
+            <button
+              type="submit"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              class="btn btn-primary me-2"
+              id="saveDeckBtn"
+            >
               Save Flashcard Deck
             </button>
             <button type="button" class="btn btn-danger" id="goBackBtn">
