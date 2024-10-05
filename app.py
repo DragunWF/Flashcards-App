@@ -33,6 +33,7 @@ class WebApp:
         logging.info(f"A user is sending a {request.method} to {request.url}")
         is_new_deck_created = False
 
+        # Post method functionality
         if request.method == "POST":
             is_new_deck_created = True
             flashcard_count = 1
@@ -52,7 +53,11 @@ class WebApp:
                 )
             return render_template("flashcard_editor.html", generated_code=generated_code,
                                    is_new_deck_created=is_new_deck_created)
-        
+
+        code = request.args.get("code")
+        if code:
+            pass
+
         return render_template("flashcard_editor.html", 
                                is_new_deck_created=is_new_deck_created)
 
