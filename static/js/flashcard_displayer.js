@@ -89,7 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Access Code Modal Event Listeners
-  submitBtn.addEventListener("click", () => {});
+  submitBtn.addEventListener("click", () => {
+    const accessCodeInput = document.getElementById("accessCodeInput");
+    if (accessCodeInput.value.length !== 7) {
+      alert("Flashcard access code should contain strictly 7 characters!");
+    } else {
+      submitBtn.setAttribute("type", "submit");
+    }
+  });
 
   // onReady methods
   fillFlashcards();
