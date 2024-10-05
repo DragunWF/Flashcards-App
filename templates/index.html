@@ -65,9 +65,68 @@
         >
           Create your own Flashcards
         </button>
-        <button type="button" class="btn btn-secondary" id="loadFlashcardsBtn">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="loadFlashcardsBtn"
+          data-bs-toggle="modal"
+          data-bs-target="#accessCodeModal"
+        >
           Load Flashcards Deck
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Access Code Modal -->
+<div
+  class="modal fade"
+  id="accessCodeModal"
+  tabindex="-1"
+  aria-labelledby="accessCodeLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="accessCodeLabel">Enter Access Code</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="accessCodeForm">
+          <div class="mb-3">
+            <label for="accessCodeInput" class="form-label"
+              >6-Character Flashcard Code</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="accessCodeInput"
+              placeholder="Enter your access code"
+              maxlength="6"
+              required
+            />
+            <div class="invalid-feedback">
+              Please enter a valid 6-character code to access your flashcard.
+            </div>
+          </div>
+          <div class="d-flex justify-content-end btn-group" role="group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
