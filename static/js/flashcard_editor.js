@@ -33,10 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById("saveDeckBtn").addEventListener("click", () => {
-    alert("Save flashcard deck functionality goes here.");
+    // TODO
   });
 
   document.getElementById("goBackBtn").addEventListener("click", () => {
-    window.history.back(); // Navigates back to the previous page
+    window.location.href = "/";
   });
+
+  function onStart() {
+    const codeModal = new bootstrap.Modal(document.getElementById("codeModal"));
+    if (codeModal !== null) {
+      codeModal.show();
+    }
+  }
+
+  onStart();
 });
