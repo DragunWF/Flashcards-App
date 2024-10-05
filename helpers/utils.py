@@ -2,7 +2,7 @@ import random
 from string import ascii_letters, digits
 
 class Utils:
-    CODE_CHAR_COUNT_LIMIT = 6
+    CODE_CHAR_COUNT_LIMIT = 7
 
     @staticmethod
     def generate_code() -> str:

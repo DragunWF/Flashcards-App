@@ -109,15 +109,17 @@
               class="form-control"
               id="accessCodeInput"
               placeholder="Enter your access code"
-              maxlength="6"
+              maxlength="7"
               required
             />
             <div class="invalid-feedback">
-              Please enter a valid 6-character code to access your flashcard.
+              Please enter a valid 7-character code to access your flashcard.
             </div>
           </div>
           <div class="d-flex justify-content-end btn-group" role="group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              Submit
+            </button>
             <button
               type="button"
               class="btn btn-secondary"
