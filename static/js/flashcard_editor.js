@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Load, Save, Go Back event listeners can be added here
   document.getElementById("loadDeckBtn").addEventListener("click", () => {
-    alert("Load flashcard deck functionality goes here.");
+    // Reloads the page with the access code as the GET method parameter
   });
 
   document.getElementById("saveDeckBtn").addEventListener("click", () => {
