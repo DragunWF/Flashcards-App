@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function onStart() {
     const codeModal = new bootstrap.Modal(document.getElementById("codeModal"));
-    if (codeModal !== null) {
+    if (codeModal) {
       codeModal.show();
     }
   }

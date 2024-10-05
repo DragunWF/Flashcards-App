@@ -41,6 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function displayInvalidAccessCodeModal() {
+    const invalidAccessCodeModal = new bootstrap.Modal(
+      document.getElementById("invalidAccessCodeModal")
+    );
+    console.log(invalidAccessCodeModal);
+    if (invalidAccessCodeModal) {
+      invalidAccessCodeModal.show();
+    }
+  }
+
   function changeFlashcardContent() {
     revealBtn.textContent = revealBtnTexts.default;
     flashcardText.innerText = flashcards[flashcardIndex].definition;
@@ -83,4 +93,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // onReady methods
   fillFlashcards();
+  displayInvalidAccessCodeModal();
 });
