@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Flashcard Components
+  // Flashcard Bottom Buttons
   const createFlashcardsBtn = document.getElementById("createFlashcardsBtn");
   const nextFlashcardBtn = document.getElementById("flashcardNextBtn");
   const previousFlashcardBtn = document.getElementById("flashcardPreviousBtn");
+
+  // Flashcard Components
   const flashcardText = document.getElementById("flashcardText");
   const revealBtn = document.getElementById("flashcardRevealBtn");
   const revealBtnTexts = {
     default: "Reveal Answer",
     toggled: "Display Defintion",
   };
+
+  // Access Code Modal Components
+  const submitBtn = document.getElementById("submitBtn");
 
   // Flashcards data
   const flashcards = []; // Each element of arr: { answer: "", definition: "" }
@@ -41,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     flashcardText.innerText = flashcards[flashcardIndex].definition;
   }
 
-  // Event listeners
+  // Flashcard Components Event Listeners
   revealBtn.addEventListener("click", () => {
     if (revealBtn.textContent === revealBtnTexts.default) {
       revealBtn.textContent = revealBtnTexts.toggled;
@@ -52,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Flashcard Bottom Buttons Event Listeners
   createFlashcardsBtn.addEventListener("click", () => {
     window.location.href = "/flashcard-editor";
   });
@@ -72,5 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     changeFlashcardContent();
   });
 
+  // Access Code Modal Event Listeners
+  submitBtn.addEventListener("click", () => {});
+
+  // onReady methods
   fillFlashcards();
 });
