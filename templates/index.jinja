@@ -1,10 +1,10 @@
-{% extends "layout.html" %} {% block main %}
+{% extends "layout.jinja" %} {% block main %}
 
 <!-- Flashcard Data -->
 {% for i in range(len(flashcards)) %}
-<span id="flashcardDefinition{{ i }}" hidden
-  >{{ flashcards[i].get_definition() }}</span
->
+<span id="flashcardDefinition{{ i }}" hidden>{{
+  flashcards[i].get_definition()
+}}</span>
 <span id="flashcardAnswer{{ i }}" hidden
   >{{ flashcards[i].get_answer() }}
 </span>

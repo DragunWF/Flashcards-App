@@ -23,7 +23,7 @@ class WebApp:
             if not flashcard_code is None:
                 is_invalid_code = True
 
-        return render_template("index.html", flashcard_topic=flashcards[0],
+        return render_template("index.jinja", flashcard_topic=flashcards[0],
                                flashcards=flashcards[1], len=len, is_invalid_code=is_invalid_code,
                                flashcard_code=flashcard_code if flashcard_code else DEFAULT_CODE)
 
@@ -50,7 +50,7 @@ class WebApp:
                 generated_code = DatabaseHelper.create_flashcard_deck(
                     request.form.get("topic"), flashcards
                 )
-            return render_template("flashcard_editor.html", generated_code=generated_code,
+            return render_template("flashcard_editor.jinja", generated_code=generated_code,
                                    is_new_deck_created=is_new_deck_created)
 
         FLASHCARD_CODE = request.args.get("code")
@@ -60,7 +60,7 @@ class WebApp:
         flashcards = flashcard_deck[1] if flashcard_deck else []
         deck_title = flashcard_deck[0] if flashcard_deck else ""
 
-        return render_template("flashcard_editor.html",
+        return render_template("flashcard_editor.jinja",
                                is_new_deck_created=is_new_deck_created, len=len,
                                deck_title=deck_title, flashcards=flashcards)
 
