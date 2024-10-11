@@ -47,9 +47,9 @@ class WebApp:
                     break
                 flashcards.append(Flashcard(answer, definition))
                 flashcard_count += 1
-                generated_code = DatabaseHelper.create_flashcard_deck(
-                    request.form.get("topic"), flashcards
-                )
+            generated_code = DatabaseHelper.create_flashcard_deck(
+                request.form.get("topic"), flashcards
+            )
             return render_template("flashcard_editor.jinja", generated_code=generated_code,
                                    is_new_deck_created=is_new_deck_created, len=len)
 
