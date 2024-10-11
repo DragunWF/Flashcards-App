@@ -25,7 +25,7 @@ class WebApp:
 
         return render_template("index.html", flashcard_topic=flashcards[0],
                                flashcards=flashcards[1], len=len, is_invalid_code=is_invalid_code,
-                               flashcard_code=flashcard_code)
+                               flashcard_code=flashcard_code if flashcard_code else DEFAULT_CODE)
 
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
@@ -57,10 +57,12 @@ class WebApp:
         flashcard_deck = None
         if FLASHCARD_CODE:
             flashcard_deck = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
+        flashcards = flashcard_deck[1] if flashcard_deck else []
+        deck_title = flashcard_deck[0] if flashcard_deck else ""
 
         return render_template("flashcard_editor.html",
                                is_new_deck_created=is_new_deck_created,
-                               deck_title=flashcard_deck[0], flashcards=flashcard_deck[1])
+                               deck_title=deck_title, flashcards=flashcards)
 
     @staticmethod
     def start():
