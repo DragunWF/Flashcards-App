@@ -73,11 +73,20 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("flashcardCount").innerText
     );
     for (let i = 0; i < flashcardCount; i++) {
-      addFlashcard(
-        document.getElementById(`flashcardAnswer${i}`).innerText,
-        document.getElementById(`flashcardDefinition${i}`).innerText
-      );
+      const definition = document.getElementById(
+        `flashcardDefinition${i}`
+      ).innerText;
+      const answer = document.getElementById(`flashcardAnswer${i}`).innerText;
+
+      // For the initial flashcard textbox inputs of the page
+      if (i === 0) {
+        document.getElementById("answer1").value = answer;
+        document.getElementById("definition1").innerText = definition;
+      } else {
+        addFlashcard(definition, answer);
+      }
     }
+
     // To leave one empty for the users to modify or add to the deck
     addFlashcard();
   }
