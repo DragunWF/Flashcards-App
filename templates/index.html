@@ -8,6 +8,7 @@
 <span id="flashcardAnswer{{ i }}" hidden
   >{{ flashcards[i].get_answer() }}
 </span>
+<span id="flashcardsCode" hidden>{{ flashcard_code }}</span>
 {% endfor %}
 
 <div class="container mt-5">
@@ -149,7 +150,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">
-          Access code "{{ code_entered }}" does not exist!
+          Access code "{{ flashcard_code }}" does not exist!
         </h5>
         <button
           type="button"
@@ -159,7 +160,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        "{{ code_entered }}" is not recognized! Make sure you typed in the
+        "{{ flashcard_code }}" is not recognized! Make sure you typed in the
         correct code!
       </div>
       <div class="modal-footer">

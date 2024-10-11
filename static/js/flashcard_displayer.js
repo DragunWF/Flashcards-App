@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const createFlashcardsBtn = document.getElementById("createFlashcardsBtn");
   const nextFlashcardBtn = document.getElementById("flashcardNextBtn");
   const previousFlashcardBtn = document.getElementById("flashcardPreviousBtn");
+  const editFlashcardsBtn = document.getElementById("editFlashcardsBtn");
 
   // Flashcard Components
   const flashcardText = document.getElementById("flashcardText");
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.getElementById("submitBtn");
 
   // Flashcards data
+  const flashcardsCode = document.getElementById("flashcardsCode").innerText;
   const flashcards = []; // Each element of arr: { answer: "", definition: "" }
   let flashcardIndex = 0;
 
@@ -86,6 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
       flashcardIndex = flashcards.length - 1;
     }
     changeFlashcardContent();
+  });
+
+  editFlashcardsBtn.addEventListener("click", () => {
+    window.location.href = `/flashcard-editor?code=${flashcardsCode}`;
   });
 
   // Access Code Modal Event Listeners

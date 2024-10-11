@@ -11,22 +11,21 @@ class WebApp:
     @app.route('/', methods=["GET"])
     def index():
         logging.info(f"A user is entering {request.url}")
-        
+
         # Selects the flashcard deck to be displayed in the page
-        FLASHCARD_CODE = request.args.get("code")
+        flashcard_code = request.args.get("code")
         DEFAULT_CODE = "TEST101"
         is_invalid_code = False
-        flashcards = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
+        flashcards = DatabaseHelper.get_flashcards(flashcard_code)
         if flashcards is None:
             # Default Flashcard Deck
-            flashcards = DatabaseHelper.get_flashcards(DEFAULT_CODE)  
-            if not FLASHCARD_CODE is None:
+            flashcards = DatabaseHelper.get_flashcards(DEFAULT_CODE)
+            if not flashcard_code is None:
                 is_invalid_code = True
 
-        print(is_invalid_code)
         return render_template("index.html", flashcard_topic=flashcards[0],
                                flashcards=flashcards[1], len=len, is_invalid_code=is_invalid_code,
-                               code_entered=FLASHCARD_CODE)
+                               flashcard_code=flashcard_code)
 
     @app.route("/flashcard-editor", methods=["GET", "POST"])
     def flashcard_editor():
@@ -58,7 +57,7 @@ class WebApp:
         if code:
             pass
 
-        return render_template("flashcard_editor.html", 
+        return render_template("flashcard_editor.html",
                                is_new_deck_created=is_new_deck_created)
 
     @staticmethod
