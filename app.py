@@ -51,7 +51,7 @@ class WebApp:
                     request.form.get("topic"), flashcards
                 )
             return render_template("flashcard_editor.jinja", generated_code=generated_code,
-                                   is_new_deck_created=is_new_deck_created)
+                                   is_new_deck_created=is_new_deck_created, len=len)
 
         FLASHCARD_CODE = request.args.get("code")
         flashcard_deck = None
