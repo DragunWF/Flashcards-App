@@ -61,7 +61,7 @@ class WebApp:
         deck_title = flashcard_deck[0] if flashcard_deck else ""
 
         return render_template("flashcard_editor.html",
-                               is_new_deck_created=is_new_deck_created,
+                               is_new_deck_created=is_new_deck_created, len=len,
                                deck_title=deck_title, flashcards=flashcards)
 
     @staticmethod
