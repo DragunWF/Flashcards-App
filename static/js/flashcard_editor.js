@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const flashcardContainer = document.getElementById("flashcardContainer");
   const addFlashcardBtn = document.getElementById("addFlashcardBtn");
+  const loadDeckBtn = document.getElementById("loadDeckBtn");
+  const saveDeckBtn = document.getElementById("saveDeckBtn");
+  const backBtn = document.getElementById("goBackBtn");
 
   let flashcardCount = 1; // Start with 1 flashcard
 
@@ -10,15 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Load, Save, Go Back event listeners can be added here
-  document.getElementById("loadDeckBtn").addEventListener("click", () => {
+  loadDeckBtn.addEventListener("click", () => {
     // TODO
   });
 
-  document.getElementById("saveDeckBtn").addEventListener("click", () => {
-    // TODO
+  saveDeckBtn.addEventListener("click", () => {
+    if (isDeckDataValid()) {
+      saveDeckBtn.setAttribute("type", "submit");
+    } else {
+      alert("Please make sure you at least have one valid card!");
+    }
   });
 
-  document.getElementById("goBackBtn").addEventListener("click", () => {
+  backBtn.addEventListener("click", () => {
     window.location.href = "/";
   });
 
@@ -81,14 +88,26 @@ document.addEventListener("DOMContentLoaded", function () {
       // For the initial flashcard textbox inputs of the page
       if (i === 0) {
         document.getElementById("answer1").value = answer;
-        document.getElementById("definition1").innerText = definition;
+        document.getElementById("definition1").value = definition;
       } else {
-        addFlashcard(definition, answer);
+        addFlashcard(answer, definition);
       }
     }
 
     // To leave one empty for the users to modify or add to the deck
     addFlashcard();
+  }
+
+  function isDeckDataValid() {
+    for (let i = 1; i <= flashcardCount; i++) {
+      if (
+        document.getElementById(`answer${i}`).value &&
+        document.getElementById(`definition${i}`).value
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   // This condition determines if a pre-existing deck has been passed via Jinja
