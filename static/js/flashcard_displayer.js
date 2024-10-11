@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const invalidAccessCodeModal = new bootstrap.Modal(
       document.getElementById("invalidAccessCodeModal")
     );
-    console.log(invalidAccessCodeModal);
     if (invalidAccessCodeModal) {
       invalidAccessCodeModal.show();
     }
