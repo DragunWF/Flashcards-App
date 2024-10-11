@@ -53,12 +53,14 @@ class WebApp:
             return render_template("flashcard_editor.html", generated_code=generated_code,
                                    is_new_deck_created=is_new_deck_created)
 
-        code = request.args.get("code")
-        if code:
-            pass
+        FLASHCARD_CODE = request.args.get("code")
+        flashcard_deck = None
+        if FLASHCARD_CODE:
+            flashcard_deck = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
 
         return render_template("flashcard_editor.html",
-                               is_new_deck_created=is_new_deck_created)
+                               is_new_deck_created=is_new_deck_created,
+                               deck_title=flashcard_deck[0], flashcards=flashcard_deck[1])
 
     @staticmethod
     def start():
