@@ -91,7 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   editFlashcardsBtn.addEventListener("click", () => {
-    window.location.href = `/flashcard-editor?code=${flashcardsCode}`;
+    if (flashcardsCode === null) {
+      alert("You cannot edit this flashcard deck!");
+    } else {
+      window.location.href = `/flashcard-editor?code=${flashcardsCode}`;
+    }
   });
 
   // Access Code Modal Event Listeners
