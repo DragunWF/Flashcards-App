@@ -66,6 +66,10 @@ class WebApp:
                                is_new_deck_created=is_new_deck_created, len=len,
                                deck_title=deck_title, flashcards=flashcards,
                                is_invalid_code=not flashcard_deck, flashcard_code=FLASHCARD_CODE)
+    
+    @app.errorhandler(Exception)
+    def http_status_error(error):
+        return render_template("apology.jinja")
 
     @staticmethod
     def start():
