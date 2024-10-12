@@ -199,6 +199,42 @@
     </div>
   </div>
 </div>
-{% endblock %} {% block scripts %}
+
+<!-- Invalid access code modal -->
+{% if is_invalid_code %}
+<div
+  class="modal fade"
+  id="invalidAccessCodeModal"
+  tabindex="-1"
+  aria-labelledby="invalidAccessCodeLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Access code "{{ flashcard_code }}" does not exist!
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        "{{ flashcard_code }}" is not recognized! Make sure you typed in the
+        correct code!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %} {% endblock %} {% block scripts %}
 <script src="/static/js/flashcard_editor.js"></script>
+<script src="/static/js/invalid_access_code_modal.js"></script>
 {% endblock %}

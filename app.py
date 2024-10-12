@@ -32,7 +32,7 @@ class WebApp:
         logging.info(f"A user is sending a {request.method} to {request.url}")
         is_new_deck_created = False
 
-        # Post method functionality
+        # Post method functionality for saving deck
         if request.method == "POST":
             is_new_deck_created = True
             flashcard_count = 1
@@ -59,10 +59,13 @@ class WebApp:
             flashcard_deck = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
         flashcards = flashcard_deck[1] if flashcard_deck else []
         deck_title = flashcard_deck[0] if flashcard_deck else ""
+        print(flashcard_deck)
+        print(bool(flashcard_deck))
 
         return render_template("flashcard_editor.jinja",
                                is_new_deck_created=is_new_deck_created, len=len,
-                               deck_title=deck_title, flashcards=flashcards)
+                               deck_title=deck_title, flashcards=flashcards,
+                               is_invalid_code=not flashcard_deck, flashcard_code=FLASHCARD_CODE)
 
     @staticmethod
     def start():
