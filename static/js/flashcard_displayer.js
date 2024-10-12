@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const flashcards = []; // Each element of arr: { answer: "", definition: "" }
   let flashcardIndex = 0;
 
+  // Utility functions
   function fillFlashcards() {
     let flashcardCount = 0;
     while (true) {
@@ -107,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // onReady methods
+  // On Ready methods
   fillFlashcards();
   displayInvalidAccessCodeModal();
 });
