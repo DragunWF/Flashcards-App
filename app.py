@@ -59,8 +59,6 @@ class WebApp:
             flashcard_deck = DatabaseHelper.get_flashcards(FLASHCARD_CODE)
         flashcards = flashcard_deck[1] if flashcard_deck else []
         deck_title = flashcard_deck[0] if flashcard_deck else ""
-        print(flashcard_deck)
-        print(bool(flashcard_deck))
 
         return render_template("flashcard_editor.jinja",
                                is_new_deck_created=is_new_deck_created, len=len,
