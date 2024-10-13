@@ -1,4 +1,7 @@
 import logging
+import os
+from dotenv import load_dotenv
+
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -11,12 +14,25 @@ from helpers.utils import Utils
 class DatabaseHelper:
     @staticmethod
     def start_database():
-        firebase_admin.initialize_app(credentials.Certificate('private/credentials.json'), {
+        load_dotenv()
+        firebase_admin.initialize_app(credentials.Certificate({
+            "type": os.getenv("TYPE"),
+            "project_id": os.getenv("PROJECT_ID"),
+            "private_key_id": os.getenv("PRIVATE_KEY_ID"),
+            "private_key": os.getenv("PRIVATE_KEY").replace("\\n", "\n"),
+            "client_email": os.getenv("CLIENT_EMAIL"),
+            "client_id": os.getenv("CLIENT_ID"),
+            "auth_uri": os.getenv("AUTH_URI"),
+            "token_uri": os.getenv("TOKEN_URI"),
+            "auth_provider_x509_cert_url": os.getenv("AUTH_PROVIDER_X509_CERT_URL"),
+            "client_x509_cert_url": os.getenv("CLIENT_X509_CERT_URL"),
+            "universe_domain": os.getenv("UNIVERSE_DOMAIN")
+        }), {
             'databaseURL': "https://flashcards-app-58e80-default-rtdb.asia-southeast1.firebasedatabase.app/"
         })
         logging.info("Successfully connected to Firebase Realtime Database!")
 
-    @staticmethod
+    @ staticmethod
     def get_flashcards(code: str) -> tuple[str, list[Flashcard]] | None:
         ref = db.reference(f"{Keys.FLASHCARDS.value}/{code}")
         if ref is None:
@@ -33,8 +49,8 @@ class DatabaseHelper:
                                         data[key][Keys.DEFINITION.value]))
 
         return (data["topic"], flashcards)
-    
-    @staticmethod
+
+    @ staticmethod
     def create_flashcard_deck(topic: str, flashcards: list[Flashcard]) -> str:
         if type(topic) is None or type(flashcards) is None:
             return None
