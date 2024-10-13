@@ -1,1 +1,15 @@
-{% extends "layout.jinja" %}{% endblock %}
+{% extends "layout.jinja" %} {% block main %}
+<div class="container text-center my-5">
+  <h1 class="display-4 text-danger">Oops!</h1>
+  <p class="lead">Something went wrong. We apologize for the inconvenience.</p>
+  <img
+    src="https://http.dog/{{ status_code }}.jpg"
+    class="img-fluid mb-4"
+    alt="HTTP Status {{ status_code }}"
+  />
+  <p class="text-muted">
+    Error Code: <strong>{{ status_code }}</strong>
+  </p>
+  <a href="/" class="btn btn-primary">Go Back Home</a>
+</div>
+{% endblock %}
