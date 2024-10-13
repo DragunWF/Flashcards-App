@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 firebase-admin = "*"
 python-dotenv = "*"
+gunicorn = "*"
 
 [dev-packages]
 rich = "*"
