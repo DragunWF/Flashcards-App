@@ -19,6 +19,8 @@
    - Users should be able to edit existing flashcards to change the question or answer.
 7. **Navigation**
    - The app should allow users to easily navigate through different flashcards (e.g., “Next” and “Previous” buttons for browsing flashcards).
+8. **Randomized default flashcards**
+   - The app should have multiple different flashcard decks that can be displayed at random by default when there is no custom flashcard deck loaded in.
 
 ## Non-Functional Requirements
 
