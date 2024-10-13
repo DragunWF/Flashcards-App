@@ -5,6 +5,7 @@ from helpers.database_helper import DatabaseHelper
 from helpers.flashcard import Flashcard
 
 app = Flask(__name__)
+DatabaseHelper.start_database()
 
 
 class WebApp:
@@ -81,7 +82,6 @@ class WebApp:
         )
 
         # Run the application
-        DatabaseHelper.start_database()
         app.run(debug=True)
 
 
