@@ -2,7 +2,7 @@
 
 ## Description
 
-I got bored...
+I got bored so I made this...
 
 This Flashcards Web App is a simple and intuitive platform for creating, managing, and reviewing flashcards, designed to help users efficiently study and retain information. The app offers real-time interaction and a seamless user experience across multiple devices, making it ideal for learners who want to create their own flashcards or browse existing ones.
 
