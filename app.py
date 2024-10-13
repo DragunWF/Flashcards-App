@@ -15,7 +15,7 @@ class WebApp:
 
         # Selects the flashcard deck to be displayed in the page
         flashcard_code = request.args.get("code")
-        DEFAULT_CODE = "TEST101"
+        DEFAULT_CODE = DatabaseHelper.get_random_test_deck_code()
         is_invalid_code = False
         flashcards = DatabaseHelper.get_flashcards(flashcard_code)
         if flashcards is None:
