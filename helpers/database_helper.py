@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 from dotenv import load_dotenv
 
 import firebase_admin
@@ -40,7 +41,7 @@ class DatabaseHelper:
             except Exception as e:
                 logging.error(f"Error initializing Firebase app: {e}")
 
-    @ staticmethod
+    @staticmethod
     def get_flashcards(code: str) -> tuple[str, list[Flashcard]] | None:
         ref = db.reference(f"{Keys.FLASHCARDS.value}/{code}")
         if ref is None:
@@ -58,13 +59,30 @@ class DatabaseHelper:
 
         return (data["topic"], flashcards)
 
-    @ staticmethod
-    def create_flashcard_deck(topic: str, flashcards: list[Flashcard]) -> str:
+    @staticmethod
+    def create_flashcard_deck(topic: str, flashcards: list[Flashcard], code: str | None=None) -> str:
         if type(topic) is None or type(flashcards) is None:
             return None
-        ref = db.reference(Keys.FLASHCARDS.value)
 
-        # Validates newly generated codes to make sure a duplicate does not exist
+        ref = db.reference(Keys.FLASHCARDS.value)
+        unique_code = DatabaseHelper.__generate_unique_code() if code is None else code
+
+        # Adds the flashcard data into the database
+        new_flashcard_deck = {"topic": topic}
+        for i, flashcard in enumerate(flashcards):
+            new_flashcard_deck[f"flashcard{i + 1}"] = flashcard.to_dict()
+        ref.child(unique_code).set(new_flashcard_deck)
+
+        return unique_code
+
+    @staticmethod
+    def get_random_test_deck_code() -> str:
+        LENGTH = len(Keys.TEST_DATA.value)
+        return Keys.TEST_DATA.value[random.randint(0, LENGTH - 1)]
+
+    @staticmethod
+    def __generate_unique_code() -> str:
+        ref = db.reference(Keys.FLASHCARDS.value)
         new_code = Utils.generate_code()
         while True:
             has_duplicate = False
@@ -76,11 +94,4 @@ class DatabaseHelper:
                 new_code = Utils.generate_code()
             else:
                 break
-
-        # Adds the flashcard data into the database
-        new_flashcard_deck = {"topic": topic}
-        for i, flashcard in enumerate(flashcards):
-            new_flashcard_deck[f"flashcard{i + 1}"] = flashcard.to_dict()
-        ref.child(new_code).set(new_flashcard_deck)
-
         return new_code
