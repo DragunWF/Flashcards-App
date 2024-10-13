@@ -1,20 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const flashcardContainer = document.getElementById("flashcardContainer");
   const addFlashcardBtn = document.getElementById("addFlashcardBtn");
-  const loadDeckBtn = document.getElementById("loadDeckBtn");
   const saveDeckBtn = document.getElementById("saveDeckBtn");
   const backBtn = document.getElementById("goBackBtn");
 
-  let flashcardCount = 1; // Start with 1 flashcard
+  let flashcardCount = 1; // Initial flashcard count
 
-  // Add new flashcard when button is clicked
+  // Event listeners
   addFlashcardBtn.addEventListener("click", () => {
     addFlashcard();
-  });
-
-  // Load, Save, Go Back event listeners can be added here
-  loadDeckBtn.addEventListener("click", () => {
-    // TODO
   });
 
   saveDeckBtn.addEventListener("click", () => {
