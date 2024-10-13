@@ -158,22 +158,24 @@
           </div>
         </div>
 
-        <!-- Add Flashcard and Bottom Buttons in a Single Row -->
-        <div class="d-flex justify-content-between align-items-center">
+        <!-- Add Flashcard and Bottom Buttons in a Responsive Row -->
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4"
+        >
           <!-- Add Flashcard Button -->
           <button
             type="button"
-            class="btn btn-outline-success"
+            class="btn btn-outline-success flex-fill"
             id="addFlashcardBtn"
           >
             Add Flashcard
           </button>
 
           <!-- Bottom Buttons (Load, Save, Go Back) -->
-          <div class="d-flex">
+          <div class="d-flex flex-wrap gap-2">
             <button
               type="button"
-              class="btn btn-secondary me-2"
+              class="btn btn-secondary flex-fill"
               id="loadDeckBtn"
               data-bs-toggle="modal"
               data-bs-target="#accessCodeModal"
@@ -183,14 +185,18 @@
             <!-- Button type to be changed to "submit" via JavaScript when data is valid -->
             <button
               type="button"
+              class="btn btn-primary flex-fill"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
-              class="btn btn-primary me-2"
               id="saveDeckBtn"
             >
               Save Flashcard Deck
             </button>
-            <button type="button" class="btn btn-danger" id="goBackBtn">
+            <button
+              type="button"
+              class="btn btn-danger flex-fill"
+              id="goBackBtn"
+            >
               Go Back
             </button>
           </div>
