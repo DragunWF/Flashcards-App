@@ -40,7 +40,6 @@
 
 ### Security Requirements
 
-- Storing flashcards on the server or supporting user accounts, the system should ensure data security and prevent unauthorized access or tampering with flashcards.
 - User input (e.g., new flashcards) should be sanitized to avoid security issues like cross-site scripting (XSS).
 
 ### Cultural Requirements
