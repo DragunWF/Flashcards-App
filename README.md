@@ -11,6 +11,7 @@ You can click this [link]() to view the website.
 ### Attributions
 
 - [Flaticon: Flashcard Favicon](https://www.flaticon.com/free-icon/flash-card_6587388)
+- [HTTP Status Dogs API](https://http.dog/)
 
 ## Setup
 
@@ -32,7 +33,7 @@ pip install -r ./requirements.txt
 
 ![Home Page Images](docs/images/home_page.JPG)
 
-### Flashcard Editor
+### Flashcard Editor Page
 
 ![Flashcard Editor Image](docs/images/flashcard_editor_page.JPG)
 
@@ -43,3 +44,7 @@ pip install -r ./requirements.txt
 ### Invalid Access Code Modal
 
 ![Invalid Access Code Modal Image](docs/images/invalid_access_code_modal.JPG)
+
+### Apology Page
+
+![Apology Page](docs/images/apology_page.JPG)
