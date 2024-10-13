@@ -10,7 +10,7 @@ You can click this [link]() to view the website.
 
 ### Attributions
 
-- [Flashcard Favicon](https://www.flaticon.com/free-icon/flash-card_6587388)
+- [Flaticon: Flashcard Favicon](https://www.flaticon.com/free-icon/flash-card_6587388)
 
 ## Setup
 
