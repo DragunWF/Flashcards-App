@@ -32,7 +32,7 @@ class WebApp:
         logging.info(f"A user is sending a {request.method} to {request.url}")
         is_new_deck_created = False
 
-        # Post method functionality for saving deck
+        # POST request functionality (For saving decks)
         if request.method == "POST":
             is_new_deck_created = True
             flashcard_count = 1
@@ -53,6 +53,7 @@ class WebApp:
             return render_template("flashcard_editor.jinja", generated_code=generated_code,
                                    is_new_deck_created=is_new_deck_created, len=len)
 
+        # GET request functionality
         FLASHCARD_CODE = request.args.get("code")
         flashcard_deck = None
         if FLASHCARD_CODE:
@@ -63,7 +64,8 @@ class WebApp:
         return render_template("flashcard_editor.jinja",
                                is_new_deck_created=is_new_deck_created, len=len,
                                deck_title=deck_title, flashcards=flashcards,
-                               is_invalid_code=not flashcard_deck, flashcard_code=FLASHCARD_CODE)
+                               is_invalid_code=not flashcard_deck and FLASHCARD_CODE,
+                               flashcard_code=FLASHCARD_CODE)
 
     @app.errorhandler(Exception)
     def handle_error(error):
