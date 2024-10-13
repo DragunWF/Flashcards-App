@@ -16,24 +16,33 @@ class DatabaseHelper:
     def start_database():
         load_dotenv()
         logging.info("Successfully loaded environment variables")
-        firebase_admin.initialize_app(credentials.Certificate({
-            "type": os.getenv("TYPE"),
-            "project_id": os.getenv("PROJECT_ID"),
-            "private_key_id": os.getenv("PRIVATE_KEY_ID"),
-            "private_key": os.getenv("PRIVATE_KEY").replace("\\n", "\n"),
-            "client_email": os.getenv("CLIENT_EMAIL"),
-            "client_id": os.getenv("CLIENT_ID"),
-            "auth_uri": os.getenv("AUTH_URI"),
-            "token_uri": os.getenv("TOKEN_URI"),
-            "auth_provider_x509_cert_url": os.getenv("AUTH_PROVIDER_X509_CERT_URL"),
-            "client_x509_cert_url": os.getenv("CLIENT_X509_CERT_URL"),
-            "universe_domain": os.getenv("UNIVERSE_DOMAIN")
-        }), {
-            'databaseURL': "https://flashcards-app-58e80-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        })
-        logging.info("Successfully connected to Firebase Realtime Database!")
 
-    @ staticmethod
+        try:
+            firebase_admin.get_app()  # Check if the app is already initialized
+            logging.info("Firebase app already initialized.")
+        except ValueError:
+            cred = credentials.Certificate({
+                "type": os.getenv("TYPE"),
+                "project_id": os.getenv("PROJECT_ID"),
+                "private_key_id": os.getenv("PRIVATE_KEY_ID"),
+                "private_key": os.getenv("PRIVATE_KEY").replace("\\n", "\n"),
+                "client_email": os.getenv("CLIENT_EMAIL"),
+                "client_id": os.getenv("CLIENT_ID"),
+                "auth_uri": os.getenv("AUTH_URI"),
+                "token_uri": os.getenv("TOKEN_URI"),
+                "auth_provider_x509_cert_url": os.getenv("AUTH_PROVIDER_X509_CERT_URL"),
+                "client_x509_cert_url": os.getenv("CLIENT_X509_CERT_URL"),
+                "universe_domain": os.getenv("UNIVERSE_DOMAIN")
+            })
+            database_url = os.getenv("DATABASE_URL")
+            firebase_admin.initialize_app(cred, {
+                'databaseURL': database_url
+            })
+            logging.info(
+                "Successfully connected to Firebase Realtime Database!"
+            )
+
+    @staticmethod
     def get_flashcards(code: str) -> tuple[str, list[Flashcard]] | None:
         ref = db.reference(f"{Keys.FLASHCARDS.value}/{code}")
         if ref is None:
