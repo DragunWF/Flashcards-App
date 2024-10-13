@@ -39,7 +39,7 @@ def reset_db():
     ref = db.reference(Keys.FLASHCARDS.value)
     flashcards = ref.get()
     for key in flashcards:
-        if not key in Keys.TEST_DATA.values:
+        if not key in Keys.TEST_DATA.value:
             ref.child(key).delete()
             print(f"Deleted flashcard deck: {key}")
     print("All user-created decks has been successfully deleted!")
