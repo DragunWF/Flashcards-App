@@ -15,6 +15,7 @@ class DatabaseHelper:
     @staticmethod
     def start_database():
         load_dotenv()
+        logging.info("Successfully loaded environment variables")
         firebase_admin.initialize_app(credentials.Certificate({
             "type": os.getenv("TYPE"),
             "project_id": os.getenv("PROJECT_ID"),
